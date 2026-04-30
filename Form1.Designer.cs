@@ -161,6 +161,7 @@
             this.btnOpenFile.TabIndex = 9;
             this.btnOpenFile.Text = "열기";
             this.btnOpenFile.UseVisualStyleBackColor = false;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // btnSaveFile
             // 
@@ -172,6 +173,7 @@
             this.btnSaveFile.TabIndex = 10;
             this.btnSaveFile.Text = "저장";
             this.btnSaveFile.UseVisualStyleBackColor = false;
+            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
             // 
             // PicCanvas
             // 
