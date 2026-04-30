@@ -111,6 +111,11 @@
             // cmbColor
             // 
             this.cmbColor.FormattingEnabled = true;
+            this.cmbColor.Items.AddRange(new object[] {
+            "검은색",
+            "빨간색",
+            "파란색",
+            "노란색"});
             this.cmbColor.Location = new System.Drawing.Point(23, 54);
             this.cmbColor.Name = "cmbColor";
             this.cmbColor.Size = new System.Drawing.Size(219, 40);
