@@ -16,5 +16,10 @@ namespace SimplePaint
         {
             InitializeComponent();
         }
+
+        private void btnRectangle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
