@@ -18,6 +18,8 @@ namespace SimplePaint
 
     public partial class Form1 : Form
     {
+        private double zoomRatio = 1.0;
+
         enum ToolType { Line, Rectangle, Circle }  // 사용할도형타입
 
         private Bitmap canvasBitmap;          // 실제그림이저장되는비트맵
@@ -34,6 +36,7 @@ namespace SimplePaint
         public Form1()
         {
             InitializeComponent();
+            this.PicCanvas.MouseWheel += Form1_MouseWheel;
 
             // 캔버스초기화
             canvasBitmap = new Bitmap(PicCanvas.Width, PicCanvas.Height);
@@ -61,19 +64,29 @@ namespace SimplePaint
             trbLineWidth.Maximum = 10;   // 최대값
             trbLineWidth.Value = 5;
             trbLineWidth.ValueChanged += trbLineWidth_ValueChanged;
+
+
+
+            if (PicCanvas.Parent is Panel pnl)
+            {
+                pnl.AutoScroll = true;
+            }
+
+            PicCanvas.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
 
         private void PicCanvas_MouseDown(object sender, MouseEventArgs e)
         {
+            PicCanvas.Focus();
             isDrawing = true;             // 드래그시작
-            startPoint = e.Location;      // 시작점저장
+            startPoint = new Point((int)(e.X / zoomRatio), (int)(e.Y / zoomRatio));    // 시작점저장
         }
 
         private void PicCanvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (!isDrawing) return;       // 그림그리기와상관없는마우스움직임은무시
-            endPoint = e.Location;        // 현재위치갱신
+            endPoint = new Point((int)(e.X / zoomRatio), (int)(e.Y / zoomRatio));        // 현재위치갱신
             // PicCanvas를 다시그려라(Paint 이벤트를발생시킨다)
             PicCanvas.Invalidate();       // 화면다시그리기(미리보기)
         }
@@ -82,7 +95,7 @@ namespace SimplePaint
         {
             if (!isDrawing) return;     // 그림그리기와상관없는마우스움직임은무시
             isDrawing = false;          // 드래그종료
-            endPoint = e.Location;
+            endPoint = new Point((int)(e.X / zoomRatio), (int)(e.Y / zoomRatio));
             // 실제비트맵에도형그리기(확정)
             using (Pen pen = new Pen(currentColor, currentLineWidth))
             {
@@ -96,6 +109,8 @@ namespace SimplePaint
         private void PicCanvas_Paint(object sender, PaintEventArgs e)
         {
             if (!isDrawing) return;// 점선펜(미리보기용)
+
+            e.Graphics.ScaleTransform((float)zoomRatio, (float)zoomRatio);
             using (Pen previewPen= new Pen(currentColor, currentLineWidth))
             {
                 previewPen.DashStyle= DashStyle.Dash;
@@ -175,7 +190,27 @@ namespace SimplePaint
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "이미지 파일|*.jpg;*.jpeg;*.png;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // 외부 이미지 읽기
+                    Image loadedImage = Image.FromFile(openFileDialog.FileName);
+
+                    // 1. 캔버스 비트맵을 이미지 크기에 맞게 새로 생성
+                    canvasBitmap = new Bitmap(loadedImage);
+                    canvasGraphics = Graphics.FromImage(canvasBitmap);
+
+                    // 2. 확대 비율 초기화 및 크기 설정
+                    zoomRatio = 1.0;
+                    PicCanvas.Size = canvasBitmap.Size;
+                    PicCanvas.Image = canvasBitmap;
+
+                    PicCanvas.Invalidate();
+                    loadedImage.Dispose(); // 메모리 해제
+                }
+            }
         }
 
         private void btnSaveFile_Click(object sender, EventArgs e)
@@ -209,13 +244,24 @@ namespace SimplePaint
 
                         // 5. 캔버스 비트맵을 파일로 저장
                         canvasBitmap.Save(saveFileDialog.FileName, format);
-                        MessageBox.Show("그림이 성공적으로 저장되었습니다!", "알림");
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("저장 중 오류가 발생했습니다: " + ex.Message);
                     }
                 }
+            }
+        }
+
+        private void Form1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (ModifierKeys == Keys.Control)
+            {
+                if (e.Delta > 0) zoomRatio += 0.1;
+                else zoomRatio = Math.Max(0.1, zoomRatio - 0.1);
+
+                PicCanvas.Width = (int)(canvasBitmap.Width * zoomRatio);
+                PicCanvas.Height = (int)(canvasBitmap.Height * zoomRatio);
             }
         }
     }

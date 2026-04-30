@@ -41,11 +41,13 @@
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.btnSaveFile = new System.Windows.Forms.Button();
             this.PicCanvas = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupbox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbLineWidth)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicCanvas)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLine
@@ -116,7 +118,7 @@
             "검은색",
             "빨간색",
             "파란색",
-            "노란색"});
+            "초록색"});
             this.cmbColor.Location = new System.Drawing.Point(23, 54);
             this.cmbColor.Name = "cmbColor";
             this.cmbColor.Size = new System.Drawing.Size(219, 40);
@@ -179,19 +181,28 @@
             // 
             this.PicCanvas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PicCanvas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PicCanvas.Location = new System.Drawing.Point(62, 355);
+            this.PicCanvas.Location = new System.Drawing.Point(3, 0);
             this.PicCanvas.Name = "PicCanvas";
-            this.PicCanvas.Size = new System.Drawing.Size(1515, 796);
+            this.PicCanvas.Size = new System.Drawing.Size(1500, 784);
             this.PicCanvas.TabIndex = 11;
             this.PicCanvas.TabStop = false;
             this.PicCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseUp);
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.PicCanvas);
+            this.panel1.Location = new System.Drawing.Point(61, 370);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1515, 794);
+            this.panel1.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1628, 1193);
-            this.Controls.Add(this.PicCanvas);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSaveFile);
             this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.groupBox2);
@@ -206,6 +217,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicCanvas)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,6 +237,7 @@
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.Button btnSaveFile;
         private System.Windows.Forms.PictureBox PicCanvas;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
