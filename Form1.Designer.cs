@@ -40,12 +40,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.btnSaveFile = new System.Windows.Forms.Button();
-            this.picCanvas = new System.Windows.Forms.PictureBox();
+            this.PicCanvas = new System.Windows.Forms.PictureBox();
             this.groupbox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbLineWidth)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicCanvas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLine
@@ -59,6 +59,7 @@
             this.btnLine.Text = "직선";
             this.btnLine.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLine.UseVisualStyleBackColor = true;
+            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // btnRectangle
             // 
@@ -172,22 +173,23 @@
             this.btnSaveFile.Text = "저장";
             this.btnSaveFile.UseVisualStyleBackColor = false;
             // 
-            // picCanvas
+            // PicCanvas
             // 
-            this.picCanvas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.picCanvas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picCanvas.Location = new System.Drawing.Point(62, 355);
-            this.picCanvas.Name = "picCanvas";
-            this.picCanvas.Size = new System.Drawing.Size(1515, 796);
-            this.picCanvas.TabIndex = 11;
-            this.picCanvas.TabStop = false;
+            this.PicCanvas.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PicCanvas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PicCanvas.Location = new System.Drawing.Point(62, 355);
+            this.PicCanvas.Name = "PicCanvas";
+            this.PicCanvas.Size = new System.Drawing.Size(1515, 796);
+            this.PicCanvas.TabIndex = 11;
+            this.PicCanvas.TabStop = false;
+            this.PicCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseUp);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1628, 1193);
-            this.Controls.Add(this.picCanvas);
+            this.Controls.Add(this.PicCanvas);
             this.Controls.Add(this.btnSaveFile);
             this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.groupBox2);
@@ -201,7 +203,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbLineWidth)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicCanvas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,7 +222,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.Button btnSaveFile;
-        private System.Windows.Forms.PictureBox picCanvas;
+        private System.Windows.Forms.PictureBox PicCanvas;
     }
 }
 
