@@ -264,6 +264,11 @@ namespace SimplePaint
                 PicCanvas.Height = (int)(canvasBitmap.Height * zoomRatio);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -42,6 +42,7 @@
             this.btnSaveFile = new System.Windows.Forms.Button();
             this.PicCanvas = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupbox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbLineWidth)).BeginInit();
@@ -144,6 +145,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnClear);
             this.groupBox2.Controls.Add(this.trbLineWidth);
             this.groupBox2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox2.Location = new System.Drawing.Point(904, 112);
@@ -197,6 +199,16 @@
             this.panel1.Size = new System.Drawing.Size(1515, 794);
             this.panel1.TabIndex = 12;
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(27, 119);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(272, 62);
+            this.btnClear.TabIndex = 8;
+            this.btnClear.Text = "전체 지우기";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -238,6 +250,7 @@
         private System.Windows.Forms.Button btnSaveFile;
         private System.Windows.Forms.PictureBox PicCanvas;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
