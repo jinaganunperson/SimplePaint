@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5667A8D0-B933-48F1-BC44-A0691ED4A4B1}</ProjectGuid>
+    <ProjectGuid>{24AC3BEE-FFCA-044D-BA75-CA843F75311E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SimplePaint</RootNamespace>
     <AssemblyName>SimplePaint</AssemblyName>
@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />

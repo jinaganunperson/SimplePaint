@@ -38,11 +38,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.trbLineWidth = new System.Windows.Forms.TrackBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.btnSaveFile = new System.Windows.Forms.Button();
             this.PicCanvas = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClear = new System.Windows.Forms.Button();
             this.groupbox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbLineWidth)).BeginInit();
@@ -155,6 +155,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "선 두께";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(27, 119);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(272, 62);
+            this.btnClear.TabIndex = 8;
+            this.btnClear.Text = "전체 지우기";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // btnOpenFile
             // 
             this.btnOpenFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -198,16 +208,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1515, 794);
             this.panel1.TabIndex = 12;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(27, 119);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(272, 62);
-            this.btnClear.TabIndex = 8;
-            this.btnClear.Text = "전체 지우기";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 

@@ -18,9 +18,11 @@ namespace SimplePaint
 
     public partial class Form1 : Form
     {
-        private double zoomRatio = 1.0;
+       
 
         enum ToolType { Line, Rectangle, Circle }  // 사용할도형타입
+
+        private double zoomRatio = 1.0;
 
         private Bitmap canvasBitmap;          // 실제그림이저장되는비트맵
         private Graphics canvasGraphics;      // 비트맵위에그리기위한객체
@@ -265,9 +267,18 @@ namespace SimplePaint
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("그린 내용을 모두 지우시겠습니까?", "확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                // 2. 캔버스를 흰색으로 깨끗하게 채웁니다.
+                canvasGraphics.Clear(Color.White);
+
+                // 3. PicCanvas에 변경된 비트맵을 다시 보여줍니다.
+                PicCanvas.Invalidate();
+            }
         }
     }
 
